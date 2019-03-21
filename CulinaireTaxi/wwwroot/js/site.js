@@ -2,3 +2,12 @@
 // for details on configuring this project to bundle and minify static web assets.
 
 // Write your Javascript code.
+
+(function ($) {
+    $(function () {
+
+        $('.sidenav').sidenav();
+        $('.parallax').parallax();
+
+    }); // end of document ready
+})(jQuery); // end of jQuery name space
