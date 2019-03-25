@@ -89,68 +89,203 @@ namespace CulinaireTaxi.Data.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+
+            // Normale user
             migrationBuilder.CreateTable(
-                name: "AspNetUserLogins",
+                name: "UserInfo",
                 columns: table => new
                 {
-                    LoginProvider = table.Column<string>(maxLength: 128, nullable: false),
-                    ProviderKey = table.Column<string>(maxLength: 128, nullable: false),
-                    ProviderDisplayName = table.Column<string>(nullable: true),
-                    UserId = table.Column<string>(nullable: false)
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    UserId = table.Column<string>(maxLength: 450, nullable: false),
+                    FirstName = table.Column<string>(maxLength: 256, nullable: true),
+                    Prefix = table.Column<string>(maxLength: 256, nullable: true),
+                    LastName = table.Column<string>(maxLength: 256, nullable: true),
+                    PostalCode = table.Column<string>(maxLength: 256, nullable: true),
+                    HouseNumber = table.Column<string>(maxLength: 256, nullable: true),
+                    HouseNumberPrefix = table.Column<string>(maxLength: 256, nullable: true),
+                    City = table.Column<string>(maxLength: 256, nullable: true),
+                    Role = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_AspNetUserLogins", x => new { x.LoginProvider, x.ProviderKey });
+                    table.PrimaryKey("PK_UserInfo", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_AspNetUserLogins_AspNetUsers_UserId",
+                        name: "FK_UserInfo_AspNetUsers_UserId",
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            // Restaurant
             migrationBuilder.CreateTable(
-                name: "AspNetUserRoles",
+                name: "Restaurant",
                 columns: table => new
                 {
-                    UserId = table.Column<string>(nullable: false),
-                    RoleId = table.Column<string>(nullable: false)
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    OwnerId = table.Column<string>(maxLength: 450, nullable: false),
+                    RestaurantName = table.Column<string>(maxLength: 256, nullable: true),
+                    PostalCode = table.Column<string>(maxLength: 256, nullable: true),
+                    HouseNumber = table.Column<string>(maxLength: 256, nullable: true),
+                    HouseNumberPrefix = table.Column<string>(maxLength: 256, nullable: true),
+                    City = table.Column<string>(maxLength: 256, nullable: true),
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_AspNetUserRoles", x => new { x.UserId, x.RoleId });
+                    table.PrimaryKey("PK_Restaurant", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_AspNetUserRoles_AspNetRoles_RoleId",
-                        column: x => x.RoleId,
-                        principalTable: "AspNetRoles",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_AspNetUserRoles_AspNetUsers_UserId",
-                        column: x => x.UserId,
+                        name: "FK_Restaurant_AspNetUsers_UserId",
+                        column: x => x.OwnerId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            // Tafels van een restaurant
             migrationBuilder.CreateTable(
-                name: "AspNetUserTokens",
+                name: "RestaurantTable",
                 columns: table => new
                 {
-                    UserId = table.Column<string>(nullable: false),
-                    LoginProvider = table.Column<string>(maxLength: 128, nullable: false),
-                    Name = table.Column<string>(maxLength: 128, nullable: false),
-                    Value = table.Column<string>(nullable: true)
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    RestaurantId = table.Column<int>(nullable: false),
+                    Available = table.Column<string>(maxLength: 256, nullable: true),
+                    TableNumber = table.Column<string>(maxLength: 256, nullable: true),
+                    NumberOfChairs = table.Column<string>(maxLength: 256, nullable: true),
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_AspNetUserTokens", x => new { x.UserId, x.LoginProvider, x.Name });
+                    table.PrimaryKey("PK_RestaurantTable", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_AspNetUserTokens_AspNetUsers_UserId",
-                        column: x => x.UserId,
+                        name: "FK_RestaurantTable_Id",
+                        column: x => x.RestaurantId,
+                        principalTable: "Restaurant",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            // Taxibedrijf
+            migrationBuilder.CreateTable(
+                name: "TaxiCompany",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    OwnerId = table.Column<string>(maxLength: 450, nullable: false),
+                    CompanyName = table.Column<string>(maxLength: 256, nullable: true),
+                    CompanyLocation = table.Column<string>(maxLength: 256, nullable: true),
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TaxiCompany", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_TaxiCompany_AspNetUsers_UserId",
+                        column: x => x.OwnerId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            // Taxi's bij een taxibedrijf
+            migrationBuilder.CreateTable(
+                name: "TaxiCompanyAvailable",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    TaxiCompanyId = table.Column<int>(nullable: false),
+                    TaxiAvailable = table.Column<bool>(nullable: true),
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TaxiCompanyAvailable", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_TaxiCompany_Id",
+                        column: x => x.TaxiCompanyId,
+                        principalTable: "TaxiCompany",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            // Contracten tussen taxi's en restauranten.
+            migrationBuilder.CreateTable(
+                name: "TaxiRestaurantContract",
+                columns: table => new
+                {
+                    RestaurantId = table.Column<int>(nullable: false),
+                    TaxiCompanyId = table.Column<int>(nullable: false),
+                    ContractDescription = table.Column<string>(maxLength: 256, nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.ForeignKey(
+                        name: "FK_TaxiRestaurantContract_RestaurantId",
+                        column: x => x.RestaurantId,
+                        principalTable: "Restaurant",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.NoAction);
+
+                    table.ForeignKey(
+                        name: "FK_TaxiRestaurantContract_TaxiCompanyId",
+                        column: x => x.TaxiCompanyId,
+                        principalTable: "TaxiCompany",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.NoAction);
+                });
+
+            // Reservaties tussen de user en restaurant
+            migrationBuilder.CreateTable(
+                name: "Reservation",
+                columns: table => new
+                {
+                    RestaurantId = table.Column<int>(nullable: false),
+                    UserInfoId = table.Column<int>(nullable: false),
+                    AnmountOfPersons = table.Column<int>(nullable: true),
+                    Time = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.ForeignKey(
+                        name: "FK_Reservation_RestaurantId",
+                        column: x => x.RestaurantId,
+                        principalTable: "Restaurant",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.NoAction);
+
+                    table.ForeignKey(
+                        name: "FK_Reservation_UserInfoId",
+                        column: x => x.UserInfoId,
+                        principalTable: "UserInfo",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.NoAction);
+                });
+
+            // Reservaties tussen de user en restaurant
+            migrationBuilder.CreateTable(
+                name: "TaxiReservations",
+                columns: table => new
+                {
+                    TaxiCompanyId = table.Column<int>(nullable: false),
+                    UserInfoId = table.Column<int>(nullable: false),
+                    Time = table.Column<string>(nullable: true),
+                },
+                constraints: table =>
+                {
+                    table.ForeignKey(
+                        name: "FK_TaxiReservations_TaxiCompany",
+                        column: x => x.TaxiCompanyId,
+                        principalTable: "TaxiCompany",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.NoAction);
+
+                    table.ForeignKey(
+                        name: "FK_TaxiReservations_UserInfoId",
+                        column: x => x.UserInfoId,
+                        principalTable: "UserInfo",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.NoAction);
                 });
 
             migrationBuilder.CreateIndex(
@@ -169,16 +304,6 @@ namespace CulinaireTaxi.Data.Migrations
                 name: "IX_AspNetUserClaims_UserId",
                 table: "AspNetUserClaims",
                 column: "UserId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_AspNetUserLogins_UserId",
-                table: "AspNetUserLogins",
-                column: "UserId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_AspNetUserRoles_RoleId",
-                table: "AspNetUserRoles",
-                column: "RoleId");
 
             migrationBuilder.CreateIndex(
                 name: "EmailIndex",
