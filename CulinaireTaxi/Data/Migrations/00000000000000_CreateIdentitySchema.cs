@@ -21,7 +21,7 @@ namespace CulinaireTaxi.Data.Migrations
                 {
                     table.PrimaryKey("PK_AspNetRoles", x => x.Id);
                 });
-
+            // UserRoleType are types of user, 1 = normal, 2 = restaurant, 3 = taxi
             migrationBuilder.CreateTable(
                 name: "AspNetUsers",
                 columns: table => new
@@ -40,7 +40,8 @@ namespace CulinaireTaxi.Data.Migrations
                     TwoFactorEnabled = table.Column<bool>(nullable: false),
                     LockoutEnd = table.Column<DateTimeOffset>(nullable: true),
                     LockoutEnabled = table.Column<bool>(nullable: false),
-                    AccessFailedCount = table.Column<int>(nullable: false)
+                    AccessFailedCount = table.Column<int>(nullable: false),
+                    UserRoleType = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
