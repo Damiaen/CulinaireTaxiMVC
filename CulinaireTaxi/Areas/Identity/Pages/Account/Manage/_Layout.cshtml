@@ -1,21 +1,33 @@
-﻿@{ 
-    Layout = "/Areas/Identity/Pages/_Layout.cshtml";
+﻿@{
+    Layout = "/Pages/Shared/_Layout.cshtml";
 }
 
-<h2>Manage your account</h2>
+<main>
+    <div class="parallax-container valign-wrapper">
+        <div class="parallax"><img src="~/images/background1.jpg" alt="Unsplashed background img 2"></div>
+    </div>
 
-<div>
-    <h4>Change your account settings</h4>
-    <hr />
-    <div class="row">
-        <div class="col-md-3">
-            <partial name="_ManageNav" />
-        </div>
-        <div class="col-md-9">
-            @RenderBody()
+    <div class="container">
+        <div class="section">
+            <div class="row">
+                <div class="col s12">
+                    <div class="col m3">
+                        <partial name="_ManageNav" />
+                    </div>
+                    <div class="col m9">
+                        @RenderBody()
+                    </div>                
+                </div>
+            </div>
+
         </div>
     </div>
-</div>
+
+
+    <div class="parallax-container valign-wrapper">
+        <div class="parallax"><img src="~/images/background2.jpg" alt="Unsplashed background img 3"></div>
+    </div>
+</main>
 
 @section Scripts {
     @RenderSection("Scripts", required: false)

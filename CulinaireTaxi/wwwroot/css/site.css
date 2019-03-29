@@ -6,6 +6,34 @@
  * Made By MaterializeCSS.com
  */
 
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+.container {
+    margin: 0 auto;
+    max-width: 1280px;
+    width: 90%;
+}
+
+@media only screen and (min-width: 601px) {
+    .container {
+        width: 95%;
+    }
+}
+
+@media only screen and (min-width: 993px) {
+    .container {
+        width: 80%;
+    }
+}
+
 nav ul a,
 nav .brand-logo {
     color: #444;
@@ -24,7 +52,7 @@ p {
 }
 
 .parallax-container {
-    min-height: 380px;
+    min-height: 260px;
     line-height: 0;
     height: auto;
     color: rgba(255,255,255,.9);
@@ -61,4 +89,39 @@ p {
 
 footer.page-footer {
     margin: 0;
+}
+
+@media only screen and (max-width : 992px) {
+    .parallax img {
+        max-height: 130%; /* or a little bit higher */
+    }
+}
+
+@media only screen and (min-width: 993px) {
+    .parallax img {
+        max-height: 170%; /* or higher percentages. It's up to your taste */
+    }
+}
+
+
+#login-page {
+    margin-top: 60px;
+    max-width: 500px;
+}
+
+.login-card {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -moz-transform: translate(-50%, -50%) -webkit-transform: translate(-50%, -50%) -ms-transform: translate(-50%, -50%) -o-transform: translate(-50%, -50%) transform: translate(-50%, -50%);
+}
+
+.login-main {
+    background-image: url("../images/background1.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.collection .collection-item.active a{
+    color: #eafaf9;
 }
