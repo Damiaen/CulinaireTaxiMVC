@@ -1,0 +1,70 @@
+﻿@page
+@model CulinaireTaxi.Pages.Manage.CompanyOverviewModel
+@{
+    ViewData["Title"] = "CompanyOverview";
+
+}
+
+<div class="row">
+    <div class="col s12">
+        <div class="row">
+            <div class="col s12">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="col s12 center" style="margin-bottom:20px;">
+                            <h5>Voeg uw bedrijf toe (Uw type = Restaurant)</h5>
+                        </div>
+                        <div class="row">
+                            <form class="col s12">
+                                <div class="row">
+                                    <div class="input-field col s6">
+                                        <input placeholder="Bedrijfsnaam" id="first_name" type="text" class="validate">
+                                        <label for="first_name">Bedrijfsnaam</label>
+                                    </div>
+                                    <div class="input-field col s6">
+                                        <input placeholder="Locatie" id="last_name" type="text" class="validate">
+                                        <label for="last_name">Locatie</label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="input-field col s4">
+                                        <input placeholder="Straatnaam" id="password" type="text" class="validate">
+                                        <label for="password">Straatnaam</label>
+                                    </div>
+                                    <div class="input-field col s3">
+                                        <input placeholder="Postcode" id="password" type="text" class="validate">
+                                        <label for="password">Postcode</label>
+                                    </div>
+                                    <div class="input-field col s3">
+                                        <input placeholder="HuisNr" id="password" type="text" class="validate">
+                                        <label for="password">HuisNr</label>
+                                    </div>
+                                    <div class="input-field col s2">
+                                        <input placeholder="HuisNrPrefix" id="password" type="text" class="validate">
+                                        <label for="password">HuisNrPrefix</label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="input-field col s12">
+                                        <textarea placeholder="Voer hier een descriptie en verdere informatie in over uw bedrijf, met bijv. een link naar een eigen site (max 160 characters)" id="textarea2" class="materialize-textarea" data-length="160"></textarea>
+                                        <label for="textarea2">Voer een beschrijving in</label>
+                                    </div>
+                                </div>
+                                <div class="card-action">
+                                    <button type="submit" href="" class="btn-flat right" style="color:green">Versturen voor goedkeuring</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+
