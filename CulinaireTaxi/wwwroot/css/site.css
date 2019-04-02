@@ -125,3 +125,9 @@ footer.page-footer {
 .collection .collection-item.active a{
     color: #eafaf9;
 }
+
+
+/* Dashboard Page */
+.dashboard-span {
+    margin-left:5px;
+}
