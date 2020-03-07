@@ -1,0 +1,101 @@
+﻿@page
+@model CulinaireTaxi.Pages.Dashboard.DashboardModel
+@{
+    ViewData["Title"] = "Dashboard";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<main>
+    <div class="parallax-container valign-wrapper">
+        <div class="parallax"><img src="~/images/background1.jpg" alt="Unsplashed background img 2"></div>
+    </div>
+
+    <div class="container" style="min-height:600px">
+        <div class="section">
+
+            <div class="row">
+                <div class="col s12 center">
+                    <h3><i class="mdi-content-send brown-text"></i></h3>
+                    <h4>Nieuwe aanmeldingen</h4>
+                </div>
+
+                <div class="col s12">
+                    <ul class="tabs">
+                        <li class="tab col s6"><a class="active" href="#test1">Meldingen restuarant</a></li>
+                        <li class="tab col s6"><a href="#test2">Meldingen taxi</a></li>
+                    </ul>
+                </div>
+
+                <div id="test1" class="col s12 left">
+                    <ul class="collection">
+                        <li class="collection-item avatar">
+                            <i class="material-icons circle">restaurant</i>
+                            <span class="title">Nieuw restaurant toegevoegd</span>
+                            <p>
+                                Nieuwe aanmelding van restaurant: pizza.                            
+                            </p>
+                            <a href="~/Dashboard/DashboardMessage" class="secondary-content"><i class="small material-icons">forward</i></a>
+                        </li>
+                        <li class="collection-item avatar">
+                            <i class="material-icons circle green">restaurant</i>
+                            <span class="title">Nieuw restaurant toegevoegd</span>
+                            <p>
+                                Nieuwe aanmelding van restaurant: chinees.
+                            </p>
+                            <a href="~/Dashboard/DashboardMessage" class="secondary-content"><i class="small material-icons">forward</i></a>
+                        </li>
+                        <li class="collection-item avatar">
+                            <i class="material-icons circle red">restaurant</i>
+                            <span class="title">Nieuw restaurant toegevoegd</span>
+                            <p>
+                                Nieuwe aanmelding van restaurant: patat.
+                            </p>
+                            <a href="~/Dashboard/DashboardMessage" class="secondary-content"><i class="small material-icons">forward</i></a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div id="test2" class="col s12 left">
+                    <ul class="collection">
+                        <li class="collection-item avatar">
+                            <i class="material-icons circle">directions_car</i>
+                            <span class="title">Nieuw taxibedrijf toegevoegd</span>
+                            <p>
+                                Nieuwe aanmelding van taxibedrijf: test.
+                            </p>
+                            <a href="~/Dashboard/DashboardMessage" class="secondary-content"><i class="small material-icons">forward</i></a>
+                        </li>
+                        <li class="collection-item avatar">
+                            <i class="material-icons circle green">directions_car</i>
+                            <span class="title">Nieuw taxibedrijf toegevoegd</span>
+                            <p>
+                                Nieuwe aanmelding van taxibedrijf: test.
+                            </p>
+                            <a href="~/Dashboard/DashboardMessage" class="secondary-content"><i class="small material-icons">forward</i></a>
+                        </li>
+                        <li class="collection-item avatar">
+                            <i class="material-icons circle red">directions_car</i>
+                            <span class="title">Nieuw taxibedrijf toegevoegd</span>
+                            <p>
+                                Nieuwe aanmelding van taxibedrijf: test.
+                            </p>
+                            <a href="~/Dashboard/DashboardMessage" class="secondary-content"><i class="small material-icons">forward</i></a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+
+
+        </div>
+
+    </div>
+
+
+    <div class="parallax-container valign-wrapper">
+        <div class="parallax"><img src="~/images/background2.jpg" alt="Unsplashed background img 3"></div>
+    </div>
+</main>
+
+

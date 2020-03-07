@@ -23,15 +23,15 @@
         <div class="nav-wrapper container">
             <a asp-page="/Index" id="logo-container" class="brand-logo">CulinaireTaxi</a>
             <ul class="right hide-on-med-and-down">
-                <li><a asp-page="/About">Restaurants</a></li>
-                <li><a asp-page="/Contact">Contact</a></li>
-                <li><a asp-page="/Restaurant">Restaurant overzicht</a></li>
+                <li><a asp-page="/Restaurants">Restauranten</a></li>
+                <li><a asp-page="/Contact">Taxi's</a></li>
+                <li><a asp-page="/Dashboard/Dashboard">Dashboard</a></li>
                 <li style="margin-left:40px"><partial name="_LoginPartial" /></li>
             </ul>
 
             <ul id="nav-mobile" class="sidenav">
-                <li><a asp-page="/Index">Startpagina</a></li>
-                <li><a asp-page="/About">About</a></li>
+                <li><a asp-page="/Restaurants">Restauranten</a></li>
+                <li><a asp-page="/About">Taxi's</a></li>
                 <li><a asp-page="/Contact">Contact</a></li>
                 <partial name="_LoginPartial" />
             </ul>
@@ -58,7 +58,7 @@
                         <ul>
                             <li><a class="grey-text text-lighten-3" href="#!">Mijn account</a></li>
                             <li><a class="grey-text text-lighten-3" href="#!">FAQ</a></li>
-                            <li><a class="grey-text text-lighten-3" href="#!">Privacybeleid</a></li>
+                            <li><a class="grey-text text-lighten-3" href="/Privacy">Privacybeleid</a></li>
                         </ul>
                     </div>
                 </div>
